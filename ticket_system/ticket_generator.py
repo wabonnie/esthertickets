@@ -99,7 +99,7 @@ def generate_ticket_pdf(ticket: dict, output_path: str) -> str:
     pdf.set_text_color(100, 100, 140)
     pdf.set_font("Helvetica", "", 5)
     pdf.set_xy(150, 54)
-    pdf.cell(0, 4, (ticket.get("qr_token", "")[:20] + "…"))
+    pdf.cell(0, 4, (ticket.get("qr_token", "")[:20] + "...") if ticket.get("qr_token") else "INVALID"   )
 
     pdf.output(output_path)
     return output_path
